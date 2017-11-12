@@ -11,19 +11,20 @@
 |
 */
 
-use App\Recipient;
-
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
 
-$router->get('/api', function () use ($router) {
+
+//$router->get('user/{id}', 'UserController@show');
+$router->get('/api/recipients', 'VoucherController@listRecipients');
+
+$router->get('/api/recipients2', function () use ($router) {    
+    // $recipientList = App\Recipient::all();
+    // return $recipientList;
+    //var $service = new VoucherService(App\Voucher, App\Offer, App\Recipient);
     
-    $recipientList = App\Recipient::all();
-    //var_dump($recipient);
-    // foreach ($recipientList as $recipient) {
-    //      echo $recipient->name . " - " . $recipient->email . "\r\n";
-    //  }
-     return $recipientList;
+    //$service = App::make('VoucherService');
+    //return $service->listRecipients();
 });
