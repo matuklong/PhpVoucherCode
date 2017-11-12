@@ -11,6 +11,19 @@
 |
 */
 
+use App\Recipient;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+
+$router->get('/api', function () use ($router) {
+    
+    $recipientList = App\Recipient::all();
+    //var_dump($recipient);
+    // foreach ($recipientList as $recipient) {
+    //      echo $recipient->name . " - " . $recipient->email . "\r\n";
+    //  }
+     return $recipientList;
 });
