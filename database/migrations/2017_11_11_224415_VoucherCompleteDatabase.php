@@ -36,7 +36,7 @@ class VoucherCompleteDatabase extends Migration
             $table->string('voucher_code');
             $table->date('expiration_date');
             $table->boolean('voucher_used');
-            $table->dateTime('usage_date');
+            $table->dateTime('usage_date')->nullable();
             //Recipient Foreign Key
             $table->unsignedInteger('recipient_id');
             $table->foreign('recipient_id')->references('recipient_id')->on('recipient');

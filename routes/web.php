@@ -19,6 +19,8 @@ $router->get('/', function () use ($router) {
 
 //$router->get('user/{id}', 'UserController@show');
 $router->get('/api/recipients', 'VoucherController@listRecipients');
+$router->post('/api/generateVouchers', 'VoucherController@generateVouchers');
+
 
 $router->get('/api/recipients2', function () use ($router) {    
     // $recipientList = App\Recipient::all();
