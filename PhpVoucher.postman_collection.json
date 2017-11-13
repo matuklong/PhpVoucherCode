@@ -1,0 +1,142 @@
+{
+	"info": {
+		"name": "PhpVoucher",
+		"_postman_id": "73a94beb-927b-9dca-9b9a-746f41547447",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listRecipients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/recipients",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"recipients"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "generateVouchers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"offer_name\": \"Special Offer 8\",\n  \"percentageDiscount\": 8,\n  \"expirationDate\": \"2018-01-20 00:00:00\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/generateVouchers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"generateVouchers"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "useVoucher",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"voucher_code\": \"1-T9E08bXz11\",\n  \"email\": \"SiPV6QB3Yf@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/useVoucher",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"useVoucher"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getValidVoucher",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"SiPV6QB3Yf@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/getValidVoucher",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"getValidVoucher"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getUsedVoucher",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"SiPV6QB3Yf@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/getUsedVoucher",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"getUsedVoucher"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
