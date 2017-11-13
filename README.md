@@ -1,6 +1,9 @@
 # README #
 
-This is the sample Voucher Pool Rest API. The methods implemented are:
+This is the sample Voucher Pool Rest API. 
+
+## Available methods ##
+
 * /api/recipients : list all recipients
 * /api/generateVouchers : generate vouchers
 * /api/useVoucher : use voucher code
