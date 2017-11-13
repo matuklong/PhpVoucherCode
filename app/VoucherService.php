@@ -134,9 +134,20 @@ class VoucherService implements IVoucherService
 
         $this->voucher->update($currentVoucher);        
 
-        //$resultDto->errorMessage = "";
         $resultDto->isvalid = true;
         return $resultDto;
+    }
+    
+    public function getValidVoucher($email)
+    {
+        $result = $this->voucher->getValidVoucher($email);     
+        return $result;
+    }
+    
+    public function getUsedVoucher($email)
+    {
+        $result = $this->voucher->getUsedVoucher($email);     
+        return $result;
     }
 
 }

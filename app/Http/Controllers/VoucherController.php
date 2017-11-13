@@ -62,8 +62,33 @@ class VoucherController extends Controller
         $voucherdto->voucher_code = $voucherRequest['voucher_code'];
         $voucherdto->email = $voucherRequest['email'];
 
-        //var_dump($specialOffer);
         $result = $this->voucherservice->useVoucher($voucherdto);
+
+        return response()->json($result);
+    }  
+    
+    public function getValidVoucher(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => 'required'
+                ]);
+
+        $voucherRequest = $request->all();
+        $result = $this->voucherservice->getValidVoucher($voucherRequest['email']);
+
+        return response()->json($result);
+    }
+    
+    public function getUsedVoucher(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => 'required'
+                ]);
+
+        $voucherRequest = $request->all();
+        $result = $this->voucherservice->getUsedVoucher($voucherRequest['email']);
 
         return response()->json($result);
     }

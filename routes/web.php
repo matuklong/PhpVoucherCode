@@ -21,4 +21,6 @@ $router->get('/', function () use ($router) {
 $router->get('/api/recipients', 'VoucherController@listRecipients');
 $router->post('/api/generateVouchers', 'VoucherController@generateVouchers');
 $router->post('/api/useVoucher', 'VoucherController@useVoucher');
+$router->post('/api/getValidVoucher', 'VoucherController@getValidVoucher');
+$router->post('/api/getUsedVoucher', 'VoucherController@getUsedVoucher');
 

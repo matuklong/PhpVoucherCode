@@ -26,8 +26,7 @@ class OfferRepository implements IOfferRepository {
         $offer->offer_name = $currentOffer->offer_name;
         $offer->percentage_discount = $currentOffer->percentage_discount;
         $offer->save();
-        // assign the new Id
-        $offer->offer_id = $offer->id;
+        
         return $offer;
     }
 
