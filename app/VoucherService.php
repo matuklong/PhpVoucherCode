@@ -116,7 +116,7 @@ class VoucherService implements IVoucherService
         else if (strtotime($currentVoucher->expiration_date) < $today)
         {
             $resultDto->errorMessage = "Voucher expired: " . $currentVoucher->expiration_date;
-            //return $resultDto;
+            return $resultDto;
         }
         else if ($currentVoucher->voucher_used == true)
         {
