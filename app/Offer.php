@@ -12,4 +12,5 @@ class Offer extends Model
      * @var string
      */
     protected $table = 'offer';
+    protected $primaryKey = 'offer_id';
 }

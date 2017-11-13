@@ -12,4 +12,5 @@ class Recipient extends Model
      * @var string
      */
     protected $table = 'recipient';
+    protected $primaryKey = 'recipient_id';
 }

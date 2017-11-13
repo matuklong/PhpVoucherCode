@@ -82,4 +82,61 @@ class VoucherService implements IVoucherService
         return $result;
     }
 
+
+    public function useVoucher($useVoucherDto)
+    {
+        $resultDto = new class{};
+        $resultDto->isvalid = false;
+        $resultDto->errorMessage = "";
+        $resultDto->percentage_discount = 0;
+
+        // here I'll get voucher by code and then validade all bussiness rules to return a friendly message
+        // Note: In a conccurrent enviroment, we should use a database lock from the initial select until the final update
+        $currentVoucher = $this->voucher->getVoucherbycode($useVoucherDto->voucher_code);
+        $currentRecipient = $this->recipient->getRecipientByEmail($useVoucherDto->email);
+
+        // date withou hours
+        $today = strtotime('today');//strtotime(date("Y-m-d", ));//date("y-m-d", strtotime("today"));
+
+        if ($currentVoucher == null)
+        {
+            $resultDto->errorMessage = "Voucher code not found";
+            return $resultDto;
+        }
+        else if ($currentRecipient == null)
+        {
+            $resultDto->errorMessage = "Email not found";
+            return $resultDto;
+        }
+        else if ($currentVoucher->recipient_id != $currentRecipient->recipient_id)
+        {
+            $resultDto->errorMessage = "Wrong voucher code or e-mail";
+            return $resultDto;
+        }
+        else if (strtotime($currentVoucher->expiration_date) < $today)
+        {
+            $resultDto->errorMessage = "Voucher expired: " . $currentVoucher->expiration_date;
+            //return $resultDto;
+        }
+        else if ($currentVoucher->voucher_used == true)
+        {
+            $resultDto->errorMessage = "Voucher alread used: " . $currentVoucher->usage_date;
+            return $resultDto;
+        }
+        
+        // Everything is fine, save usage date in voucher
+        $currentVoucher->voucher_used = true;
+        $currentVoucher->usage_date = new \Datetime();    
+        
+        // return discount information
+        $currentOffer = $this->offer->get($currentVoucher->offer_id); 
+        $resultDto->percentage_discount = $currentOffer->percentage_discount;
+
+        $this->voucher->update($currentVoucher);        
+
+        //$resultDto->errorMessage = "";
+        $resultDto->isvalid = true;
+        return $resultDto;
+    }
+
 }

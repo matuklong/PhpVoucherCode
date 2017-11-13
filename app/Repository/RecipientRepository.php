@@ -11,6 +11,11 @@ class RecipientRepository implements IRecipientRepository {
     {
         return \App\Recipient::all();
     }
+    
+    public function getRecipientByEmail($email)
+    {
+        return \App\Recipient::where('email', '=', $email)->first();
+    }
 
     public function getRecipientsWithoutVoucher($offerId)
     {        

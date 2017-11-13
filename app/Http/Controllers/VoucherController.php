@@ -45,6 +45,27 @@ class VoucherController extends Controller
         $result = $this->voucherservice->generateVoucher($currentOffer);
 
         return response()->json($result);
+    }    
+    
+    public function useVoucher(Request $request)
+    {
+
+        $this->validate($request, [
+            'voucher_code' => 'required',
+            'email' => 'required'
+                ]);
+
+        $voucherRequest = $request->all();
+
+        // convert to new class
+        $voucherdto = new class{};
+        $voucherdto->voucher_code = $voucherRequest['voucher_code'];
+        $voucherdto->email = $voucherRequest['email'];
+
+        //var_dump($specialOffer);
+        $result = $this->voucherservice->useVoucher($voucherdto);
+
+        return response()->json($result);
     }
     
 }

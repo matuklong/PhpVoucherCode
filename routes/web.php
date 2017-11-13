@@ -20,13 +20,5 @@ $router->get('/', function () use ($router) {
 //$router->get('user/{id}', 'UserController@show');
 $router->get('/api/recipients', 'VoucherController@listRecipients');
 $router->post('/api/generateVouchers', 'VoucherController@generateVouchers');
+$router->post('/api/useVoucher', 'VoucherController@useVoucher');
 
-
-$router->get('/api/recipients2', function () use ($router) {    
-    // $recipientList = App\Recipient::all();
-    // return $recipientList;
-    //var $service = new VoucherService(App\Voucher, App\Offer, App\Recipient);
-    
-    //$service = App::make('VoucherService');
-    //return $service->listRecipients();
-});

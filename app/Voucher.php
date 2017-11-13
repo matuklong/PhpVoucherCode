@@ -12,4 +12,5 @@ class Voucher extends Model
      * @var string
      */
     protected $table = 'voucher';
+    protected $primaryKey = 'voucher_id';
 }

@@ -31,5 +31,10 @@ class VoucherRepository implements IVoucherRepository {
         $voucher->voucher_id = $voucher->id;
         return $voucher;
     }
+    
+    public function update($currentVoucher)
+    {
+        $currentVoucher->save();
+    }
 
 }

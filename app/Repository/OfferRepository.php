@@ -10,6 +10,11 @@ class OfferRepository implements IOfferRepository {
         return \App\Offer::all();
     }
 
+    public function get($id)
+    {
+        return \App\Offer::where('offer_id', '=', $id)->first();
+    }
+
     public function getOfferByName($offerName)
     {
         return \App\Offer::where('offer_name', '=', $offerName)->first();
